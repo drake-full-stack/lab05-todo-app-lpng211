@@ -57,9 +57,16 @@ function App() {
             <input
               type="checkbox"
               checked={task.completed}
-              onChange={() => handleToggle(index)}
+              onChange={() => {
+                handleToggle(index);
+                console.log('toggled:', index, '->', !task.completed);
+              }}
             />
-            <span className="task-text">{task.text}</span>
+            <span
+              className={task.completed ? "task-text completed" : "task-text"}
+            >
+              {task.text}
+            </span>
             <button
               className="delete-button"
               onClick={() => handleDelete(index)}
